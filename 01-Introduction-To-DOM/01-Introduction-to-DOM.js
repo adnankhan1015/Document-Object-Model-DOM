@@ -20,3 +20,9 @@ console.log(headers);
 
 const allHeaders = document.querySelectorAll("h2");
 console.log(allHeaders);
+
+const listQuerySelector = document.querySelectorAll(".item");
+console.log(listQuerySelector);
+
+const btnQuerySelector = document.querySelector("#submit");
+console.log(btnQuerySelector);
