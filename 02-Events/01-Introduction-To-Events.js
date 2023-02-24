@@ -31,7 +31,9 @@ const button = document.querySelector("#submit");
 /* 
     ? What is the reason why we don't use parenthesis in here?
     * Because then it gonna automatically invoke the function.
-
+    * We don't use parenthesis because it's gonna run automatically.
+    * We want just a reference here, You don't add parenthesis it's just for reference it.
+    * It only executes/runs when the user actually clicks the button
 */
 button.addEventListener("click", addItem);
 
