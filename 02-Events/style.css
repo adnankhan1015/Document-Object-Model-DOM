@@ -1,5 +1,17 @@
 .color {
     color: tomato; 
-    font-size: 30px;
-    
+    font-size: 50px;
+    transition: all 0.5s ease;
+}
+
+.main-title {
+    transition: all 0.5s ease;
+}
+
+ul li {
+    background: gold; 
+}
+
+.fade {
+    opacity: 0;
 }

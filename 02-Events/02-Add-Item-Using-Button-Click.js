@@ -18,10 +18,18 @@ button.addEventListener("click", function (e) {
   todoNr.innerText = items.length;
 });
 
-button.addEventListener("click", function () {
-  console.log(mainTitle);
+button.addEventListener("click", function (event) {
+  // console.log(mainTitle);
   //   mainTitle.style.color = "red";
   //   mainTitle.style.fontSize = "25px";
   //   mainTitle.classList.add("color");
   mainTitle.classList.toggle("color");
+  console.log(event);
+});
+
+button.addEventListener("keydown", function (event) {
+  console.log("Key>", event);
+  if (event.keyCode === 40) {
+    mainTitle.classList.toggle("color");
+  }
 });
