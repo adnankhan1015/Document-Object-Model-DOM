@@ -28,8 +28,10 @@ button.addEventListener("click", function (event) {
 });
 
 button.addEventListener("keydown", function (event) {
-  console.log("Key>", event);
+  if (event.keyCode === 38) {
+    mainTitle.classList.add("color");
+  }
   if (event.keyCode === 40) {
-    mainTitle.classList.toggle("color");
+    mainTitle.classList.remove("color");
   }
 });
