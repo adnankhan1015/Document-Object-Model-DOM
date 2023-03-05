@@ -14,4 +14,12 @@ button.addEventListener("click", function (e) {
   todoList.appendChild(newItem);
 
   todoNr.innerText = items.length;
+  // Delete the value from the input
+  nameInput.value = "";
+  newItem.addEventListener("click", deleteItem);
 });
+
+function deleteItem(e) {
+  e.stopPropagation();
+  e.target.remove();
+}
