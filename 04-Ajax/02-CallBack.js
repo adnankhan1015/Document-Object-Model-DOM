@@ -31,39 +31,46 @@ const items = [1, 2, 3, 4, 5];
   * Now I am passing "{userEmail: email}" this user email as a parameterand this function here is I am calling back. 
 */
 
-console.log("Start");
+console.log('Start')
 
 function logInUser(email, password, callback) {
-  setTimeout(() => {
-    console.log("Now we have the Data");
-    callback({ userEmail: email });
-  }, 5000);
+  setTimeout(()=> {
+    callback({userEmail: email})
+  }, 1500)
 }
 
 function getUserVideos(email, callback) {
-  setTimeout(() => {
-    callback(["video1", "video2", "video3"]);
-  }, 1000);
+  setTimeout(()=> {
+    callback(['video1', 'video2', 'video3'])
+  }, 1000)
 }
 
-const user = logInUser("shery@gmail.com", 123, (user) => {
-  // * Here I ll have access to that user.
+function videoDetails(video, callback){
+  setTimeout(()=> {
+    callback("Title of the Vide")
+  },2000)
+}
+
+const user = logInUser('john@gmail.com', 12345, (user) => {
   console.log(user);
 
-  getUserVideos(user.userEmail, (video) => {
-    console.log(video);
-  });
-});
+  getUserVideos(user.userEmail, (videos) => {
+    console.log(videos);
 
-console.log(user);
+    videoDetails(videos[0], (title) => {
+      console.log(title);
+    })
+  })
+})
+console.log(user)
 
-console.log("END");
+console.log('END')
 
 /* 
   * We just pass a callback function in here.
   * Once the data comes back
   * setTimeout runs
   * We envoke that callback callback({userEmail: email}) which triggers all our functionalities here.
-  * We have acces to the user.
+  * We have access to the user.
 
 */
