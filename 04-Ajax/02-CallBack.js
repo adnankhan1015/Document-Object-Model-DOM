@@ -31,27 +31,28 @@ const items = [1, 2, 3, 4, 5];
   * Now I am passing "{userEmail: email}" this user email as a parameterand this function here is I am calling back. 
 */
 
-console.log('Start')
+console.log("Start");
 
-function logInUser(email, password, callback) {
-  setTimeout(()=> {
-    callback({userEmail: email})
-  }, 1500)
+function logInUser(email, password, callback, onSuccess, onFailure) {
+  setTimeout(() => {
+    onSuccess({ userEmail: email });
+    onFailure("User not logged in");
+  }, 1500);
 }
 
 function getUserVideos(email, callback) {
-  setTimeout(()=> {
-    callback(['video1', 'video2', 'video3'])
-  }, 1000)
+  setTimeout(() => {
+    callback(["video1", "video2", "video3"]);
+  }, 1000);
 }
 
-function videoDetails(video, callback){
-  setTimeout(()=> {
-    callback("Title of the Vide")
-  },2000)
+function videoDetails(video, callback) {
+  setTimeout(() => {
+    callback("Title of the Vide");
+  }, 2000);
 }
 
-const user = logInUser('john@gmail.com', 12345, (user) => {
+const user = logInUser("john@gmail.com", 12345, (user) => {
   console.log(user);
 
   getUserVideos(user.userEmail, (videos) => {
@@ -59,12 +60,12 @@ const user = logInUser('john@gmail.com', 12345, (user) => {
 
     videoDetails(videos[0], (title) => {
       console.log(title);
-    })
-  })
-})
-console.log(user)
+    });
+  });
+});
+console.log(user);
 
-console.log('END')
+console.log("END");
 
 /* 
   * We just pass a callback function in here.
