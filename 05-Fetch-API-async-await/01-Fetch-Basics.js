@@ -53,7 +53,7 @@ fetch("./test.txt")
 
 */
 
-fetch("https://api.github.com/users/adnankhan1015")
+fetch("https://api.github.com/users")
   .then((response) => response.json())
   .then((data) => console.log(data));
 
