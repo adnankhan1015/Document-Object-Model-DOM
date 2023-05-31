@@ -69,3 +69,4 @@ function hideSpinner() {
 }
 
 generateBtn.addEventListener("click", fetchUser);
+// document.addEventListener('DOMContentLoaded', getTodos);
