@@ -27,7 +27,7 @@ I added a custom data attribute called data-id. That is because we will need the
 */
 
 function getTodos() {
-    fetch(`${apiUrl}?_limit=5`)
+    fetch(`${apiUrl}?_limit=10`)
         .then((res) => res.json())
         .then((data) => {
             data.forEach((todo) => addTodoToDOM(todo));
@@ -47,13 +47,50 @@ const addTodoToDOM = (todo) => {
     document.getElementById('todo-list').appendChild(div);
 }
 
-const createTodo = () => {
+const createTodo = (e) => {
+    e.preventDefault();
 
+    const newTodo = {
+        title: e.target.firstElementChild.value,
+        completed: false
+    }
+
+    fetch(apiUrl, {
+        method: 'POST',
+        body: JSON.stringify(newTodo),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .then(data => addTodoToDOM(data))
+}
+
+const toggleCompleted = (e) => {
+    if (e.target.classList.contains('todo')) {
+        e.target.classList.toggle('done');
+
+        updateTodo(e.target.dataset.id, e.target.classList.contains('done'));
+
+    }
+}
+
+const updateTodo = (id, competed) => {
+    fetch(`${apiUrl}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ competed }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
 
 function init() {
     document.addEventListener('DOMContentLoaded', getTodos);
-    document.querySelector('#todo-form').addEventListener('submit', createTodo)
+    document.querySelector('#todo-form').addEventListener('submit', createTodo);
+    document.querySelector('#todo-list').addEventListener('click', toggleCompleted)
 }
 
 init();
