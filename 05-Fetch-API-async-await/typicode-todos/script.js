@@ -83,14 +83,26 @@ const updateTodo = (id, competed) => {
             'Content-Type': 'application/json'
         },
     })
-        .then(res => res.json())
-        .then(data => console.log(data))
+    // .then(res => res.json())
+    // .then(data => console.log(data))
+}
+
+const deleteTodo = (e) => {
+    if (e.target.classList.contains('todo')) {
+        const id = e.target.dataset.id;
+        fetch(`${apiUrl}/${id}`, {
+            method: 'DELETE',
+        })
+            .then((res) => res.json())
+            .then(() => e.target.remove())
+    }
 }
 
 function init() {
     document.addEventListener('DOMContentLoaded', getTodos);
     document.querySelector('#todo-form').addEventListener('submit', createTodo);
     document.querySelector('#todo-list').addEventListener('click', toggleCompleted)
+    document.querySelector('#todo-list').addEventListener('dblclick', deleteTodo)
 }
 
 init();
